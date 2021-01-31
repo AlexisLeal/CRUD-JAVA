@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Aviones Alta</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputText value="Numero de avion"></h:outputText>
+            <h:inputText value="#{controllerAviones.aviones.numeroavion}"></h:inputText>
+            
+           <h:outputText value="Numero de pasajero"></h:outputText>
+            <h:inputText value="#{controllerAviones.aviones.capacidad_pasajeros}"></h:inputText>
+            
+            <h:outputText value="Modelo"></h:outputText>
+            <h:inputText value="#{controllerAviones.aviones.modelo}"></h:inputText>
+            
+            <h:outputText value="Areolinea"></h:outputText>
+            <h:inputText value="#{controllerAviones.aviones.aerolínea}"></h:inputText>
+            
+            
+            <h:commandButton value="Agregar" action="#{controllerAviones.insert()}"></h:commandButton>
+            <h:commandButton value="Regresar" action="AvionesList" immediate="true"></h:commandButton>
+        </h:form>
+      
+
+    </h:body>
+</html>
+

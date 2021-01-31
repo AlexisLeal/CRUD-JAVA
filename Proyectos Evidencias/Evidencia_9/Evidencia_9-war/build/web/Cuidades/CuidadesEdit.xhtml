@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cuidades Edit </title>
+    </h:head>
+    <h:body>
+          <h:form>
+            
+            <h:outputText value="Nombre de la Cuidad"></h:outputText>
+            <h:inputText value="#{controllerCuidades.cuidades.nombre}"></h:inputText>
+            
+            <h:outputText value="Nombre del estado"></h:outputText>
+            <h:selectOneMenu value="#{controllerCuidades.cuidades.estado}"
+                             required="true"
+                             requiredMessage="El estado es Obligatorio">
+                <f:selectItem itemLabel="Selecione el estado de la cuidad"
+                             noSelectionOption="true"
+                             itemValue="0"></f:selectItem>
+                  <f:selectItems value ="#{controllerEstados.findAll()}"
+                              var = "est"
+                              itemLabel="#{est.nombre}"></f:selectItems>      
+            </h:selectOneMenu> 
+          <!-- Hay que agregar un converte para que pase el objeto estado -->
+           <h:outputText value="Nombre de la Cuidad destino"></h:outputText>
+           <h:inputText value="#{controllerCuidades.cuidades.destino}"></h:inputText>
+            
+               
+           <h:commandButton value="Agregar" action="#{controllerCuidades.update()}"></h:commandButton>
+            <h:commandButton value="Regresar" action="CuidadesList" immediate="true"></h:commandButton>
+        
+        </h:form>
+    </h:body>
+</html>
+

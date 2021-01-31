@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+         <title>CuidadesList</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:dataTable value="#{controllerCuidades.findAll()}" var="Cuidades" border="5">
+                <h:column>
+                     <f:facet name="header">Nombre</f:facet>
+                         #{Cuidades.nombre}
+                </h:column>
+             <h:column>
+                     <f:facet name="header">Estado</f:facet>
+                     #{Cuidades.estado.nombre}
+                </h:column>
+                 <h:column>
+                        <f:facet name="header">Destino</f:facet>
+                     #{Cuidades.destino}
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">Editar</f:facet>
+                    <h:commandButton value="Editar" action="#{controllerCuidades.prepareEdit(Cuidades)}"></h:commandButton>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Eliminar</f:facet>
+                    <h:commandButton value="Eliminar" action="#{controllerCuidades.prepareConfirm()}" rendered="#{!controllerCuidades.confirm}"></h:commandButton>
+                     <h:commandButton value="Si" rendered="#{controllerCuidades.confirm}"></h:commandButton>  
+                     <h:commandButton value="No" rendered="#{controllerCuidades.confirm}"></h:commandButton>  
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Regresar" action="/index"></h:commandButton>
+            <h:commandButton value="Agregar" action="CuidadesAlta"></h:commandButton>
+        </h:form>
+        
+    </h:body>
+</html>
+

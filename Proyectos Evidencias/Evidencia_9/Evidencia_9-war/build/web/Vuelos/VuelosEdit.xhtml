@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Vuelos Edit</title>
+    </h:head>
+    <h:body>
+         <h:form>
+            <h:outputText value="Numero de vuelo"></h:outputText>
+            <h:inputText value="#{controllerVuelos.vuelo.numerovuelos}"></h:inputText>
+            
+           <h:outputText value="Numero de Avion"></h:outputText>
+           <h:selectOneMenu value="#{controllerVuelos.vuelo.numeroDeAvion}"
+                            required = "true"
+                            requiredMessage = "El numero de avion es requerido">
+               <f:selectItem itemLabel="Selecione el numero de avion"
+                             noSelectionOption="true"
+                             itemValue="0"></f:selectItem>
+               <f:selectItems value ="#{controllerAviones.findAll()}"
+                              var = "av"
+                              itemLabel="#{av.numeroavion}"></f:selectItems>    
+           </h:selectOneMenu>
+            
+            <h:outputText value="Origen"></h:outputText>
+            <h:selectOneMenu value="#{controllerVuelos.vuelo.origen}"
+                             required="true"
+                             requiredMessage="El Origen es Obligatorio">
+                <f:selectItem itemLabel="Selecione la cuidad origen"
+                             noSelectionOption="true"
+                             itemValue="0"></f:selectItem>
+                <f:selectItems value ="#{controllerCuidades.findAll()}"
+                              var = "cd"
+                              itemLabel="#{cd.nombre}"></f:selectItems>      
+            </h:selectOneMenu> 
+            
+            
+            <h:outputText value="Destino"></h:outputText>
+            <h:selectOneMenu value="#{controllerVuelos.vuelo.destino}"
+                             required="true"
+                             requiredMessage="El destiono es Obligatorio">
+                <f:selectItem itemLabel="Selecione la cuidad destino"
+                             noSelectionOption="true"
+                             itemValue="0"></f:selectItem>
+                <f:selectItems value ="#{controllerCuidades.findAll()}"
+                              var = "cd"
+                              itemLabel="#{cd.destino}"></f:selectItems>      
+            </h:selectOneMenu>
+            
+            
+            
+            <h:outputText value="Fecha de Inicio de Vuelo"></h:outputText>
+            <h:inputText value="#{controllerVuelos.vuelo.fecha_Inicio_Vuelos}">
+                <f:convertDateTime type="date" pattern="yyyy/MM/dd" timeZone="GTM-5" ></f:convertDateTime>
+            </h:inputText>
+            
+             <h:outputText value="Fecha de fin de Vuelo"></h:outputText>
+             <h:inputText value="#{controllerVuelos.vuelo.fecha_Fin_Vuelos}">
+                <f:convertDateTime type="date" pattern="yyyy/MM/dd" timeZone="GTM-5" ></f:convertDateTime>
+            </h:inputText>
+            
+             
+             
+             
+             <h:outputText value="Hora de Inicio de Vuelo"></h:outputText>
+             <h:inputText value="#{controllerVuelos.vuelo.hora_Inicio_Vuelos}">
+                <f:convertDateTime type="time" pattern="HH:mm" timeZone="GTM-5" ></f:convertDateTime>
+            </h:inputText>
+            
+             <h:outputText value="Hora de fin de vuelo"></h:outputText>
+             <h:inputText value="#{controllerVuelos.vuelo.hora_Fin_Vuelos}">
+                <f:convertDateTime type="time" pattern="HH:mm" timeZone="GTM-5" ></f:convertDateTime>
+            </h:inputText>
+            
+            
+             <h:commandButton value="Agregar" action="#{controllerVuelos.update()}"></h:commandButton>
+             <h:commandButton value="Regresar" action="VuelosList" immediate="true"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
